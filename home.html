@@ -41,9 +41,9 @@
     <section>
     <div class="pt-14">
     <div class="w-8/10 mx-auto p-6 bg-white rounded-lg flex gap-2 justify-center flex-col items-center sm:flex-row sm:justify-start mb-4 drop-shadow-sm">
-        <button class="btn btn-outline w-[120px] h-10 text-[#64748B] border-[#E4E4E7]">All</button>
-        <button class="btn btn-outline w-[120px] h-10 text-[#64748B] border-[#E4E4E7]">Open</button>
-        <button class="btn btn-outline border-[#E4E4E7] w-[120px] h-10 text-[#64748B]">Closed</button>
+        <button id="all-btn" class="btn btn-outline w-[120px] h-10 text-white bg-[#4A00FF] border-[#E4E4E7]">All</button>
+        <button id="open-btn" class="btn btn-outline w-[120px] h-10 text-[#64748B] border-[#E4E4E7]">Open</button>
+        <button id="close-btn" class="btn btn-outline border-[#E4E4E7] w-[120px] h-10 text-[#64748B]">Closed</button>
     </div>
     </div>
     </section>
@@ -55,7 +55,7 @@
             <img class="bg-[#ECE4FF] p-2 rounded-[50%]" src="assets/Aperture.png" alt="">
            </div>
            <div>
-            <h1 class="text-xl font-semibold mb-1">50 Issues</h1>
+            <h1 class="text-xl font-semibold mb-1"><span id="total">0</span> Issues</h1>
             <p class="text-[#64748B]">Track and manage your project issues</p>
            </div>
         </div>
