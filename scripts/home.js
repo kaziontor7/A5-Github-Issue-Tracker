@@ -55,7 +55,7 @@ const showById = (show)=>{
    modalContainer.innerHTML=`
    <h3 class="text-2xl font-bold">${show.title}</h3>
    <div class="pb-1.5 flex gap-2 text-[12px] items-center">
-    <p class="px-2 py-1 bg-green-600 text-white  rounded-full">${show.status}</p>
+    <p class="px-2 py-1 bg-green-600 text-white  rounded-full">${show.status.toUpperCase()}</p>
     <p class="border-r-2 border-l-2 border-gray-200 text-center px-1 text-[#64748B]">Opened by ${show.assignee}</p>
     <p class="text-[#64748B]">${new Date(show.createdAt).toLocaleDateString()}</p>
    </div>
@@ -77,7 +77,7 @@ const showById = (show)=>{
           <div>
             <p class="text-[#64748B]
             ">Priority:</p>
-            <p class="bg-red-500 text-white px-2 py-1 rounded-full text-center">${show.priority}</p>
+            <p class="bg-red-500 text-white px-2 py-1 rounded-full text-center">${show.priority.toUpperCase()}</p>
           </div>
    `
   
