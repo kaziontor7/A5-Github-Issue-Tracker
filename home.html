@@ -77,6 +77,9 @@
     </div>
   </section>
   <section class="w-8/10 mx-auto bg-[#FBFBFB] drop-shadow-sm rounded-b-lg p-6">
+  <div id="card-spinner" class="flex items-center justify-center text-gray-500 hidden">
+    <span class="loading loading-spinner loading-xl mx-auto"></span>
+  </div>
   <div id="card-container" class="grid grid-cols-4 gap-1 space-y-2">
   </div>
   </section>
@@ -84,6 +87,9 @@
   <!-- Open the modal using ID.showModal() method -->
 <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box">
+    <div id="modal-spinner" class="flex items-center justify-center py-10 hidden">
+      <span class="loading loading-spinner loading-lg text-primary"></span>
+    </div>
     <div id="modal-container"></div>
     <div class="modal-action">
       <form method="dialog">

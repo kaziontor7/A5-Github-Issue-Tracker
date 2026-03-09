@@ -2,14 +2,39 @@ const allBtn = document.getElementById('all-btn');
 const openBtn = document.getElementById('open-btn')
 const closeBtn = document.getElementById('close-btn')
 
+const manageSpinner = (stat)=>{
+  if(stat == true){
+    document.getElementById('card-spinner').classList.remove('hidden');
+    document.getElementById('card-container').classList.add('hidden');
+
+  }
+  else{
+     document.getElementById('card-spinner').classList.add('hidden');
+    document.getElementById('card-container').classList.remove('hidden');
+  }
+}
+
+const modalSpinner = (stat)=>{
+  if(stat == true){
+    document.getElementById('modal-spinner').classList.remove('hidden');
+    document.getElementById('modal-container').classList.add('hidden');
+
+  }
+  else{
+     document.getElementById('modal-spinner').classList.add('hidden');
+    document.getElementById('modal-container').classList.remove('hidden');
+  }
+}
+
 
 const fetchAll = ()=>{
-    const url= 'https://phi-lab-server.vercel.app/api/v1/lab/issues'
+   const url= 'https://phi-lab-server.vercel.app/api/v1/lab/issues'
+     manageSpinner(true);
     fetch(url)
     .then(res => res.json())
     .then(data=> {
-        console.log(data.data);
-        showAll(data.data)
+        showAll(data.data);
+         manageSpinner(false);
       })
 }
 
@@ -17,44 +42,15 @@ fetchAll();
 
 const fetchById = async (id)=>{
   const url=`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}` 
+   document.getElementById('my_modal_5').showModal();
+  modalSpinner(true);
   const res = await fetch(url);
   const data = await res.json();
   showById(data.data)
-
+   modalSpinner(false)
 }
-// assignee
-// : 
-// "jane_smith"
-// author
-// : 
-// "john_doe"
-// createdAt
-// : 
-// "2024-01-15T10:30:00Z"
-// description
-// : 
-// "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior."
-// id
-// : 
-// 1
-// labels
-// : 
-// (2) ['bug', 'help wanted']
-// priority
-// : 
-// "high"
-// status
-// : 
-// "open"
-// title
-// : 
-// "Fix navigation menu on mobile devices"
-// updatedAt
-// : 
-// "2024-01-15T10:30:00Z"
 
 const showById = (show)=>{
-  console.log(show)
    const modalContainer = document.getElementById('modal-container')
    modalContainer.innerHTML=`
    <h3 class="text-2xl font-bold">${show.title}</h3>
@@ -84,7 +80,7 @@ const showById = (show)=>{
             <p class="bg-red-500 text-white px-2 py-1 rounded-full text-center">${show.priority}</p>
           </div>
    `
-   document.getElementById('my_modal_5').showModal();
+  
    
 }
 
@@ -129,7 +125,6 @@ by ${info.author}</p>
   });
   totalN();
 allBtn.addEventListener('click', function (){
-   console.log(datas);
    allSelected();
    fetchAll();
    totalN();
@@ -178,6 +173,7 @@ by ${info.author}</p>
 })
 closeBtn.addEventListener('click', function(){
   closeSelected();
+  manageSpinner(true);
   cardContainer.innerHTML='';
     datas.forEach(info => {
     if(info.status!=='open'){
@@ -215,6 +211,7 @@ by ${info.author}</p>
     `
     cardContainer.appendChild(createE)
     }
+    manageSpinner(false);
      totalN();
   });
 })
